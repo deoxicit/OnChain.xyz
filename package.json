@@ -1,37 +1,39 @@
 {
-  "name": "mpc-core-kit-nextjs-quick-start",
-  "version": "0.1.0",
+  "name": "host.xyz",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "biome check .",
+    "preview": "vite preview"
   },
-  "//IMP START": "IMP START - Web3Auth Installation",
   "dependencies": {
-    "@toruslabs/tss-dkls-lib": "^3.0.0",
-    "@web3auth/base": "^8.4.0",
-    "@web3auth/base-provider": "^8.4.0",
-    "@web3auth/ethereum-mpc-provider": "^8.6.1",
-    "@web3auth/mpc-core-kit": "3.0.0",
-    "@web3auth/single-factor-auth": "^7.4.0",
-    "bn.js": "^5.2.1",
-    "firebase": "^10.11.1",
-    "next": "13.4.9",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "web3": "^4.8.0"
+    "@radix-ui/react-icons": "^1.3.0",
+    "@tanstack/react-query": "5.45.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.437.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7",
+    "viem": "latest",
+    "wagmi": "latest"
   },
-  "//IMP END": "IMP END - Web3Auth Installation",
   "devDependencies": {
-    "@toruslabs/eslint-config-typescript": "^3.0.3",
-    "@types/elliptic": "^6.4.14",
-    "@types/node": "20.4.1",
-    "@types/react": "18.2.14",
-    "@types/react-dom": "18.2.7",
-    "eslint": "8.44.0",
-    "eslint-config-next": "13.4.9",
-    "typescript": "5.1.6"
+    "@biomejs/biome": "^1.8.0",
+    "@types/node": "^22.5.2",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@wagmi/cli": "latest",
+    "autoprefixer": "^10.4.20",
+    "buffer": "^6.0.3",
+    "postcss": "^8.4.42",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11"
   }
 }
