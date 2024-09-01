@@ -1,4 +1,5 @@
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { Button } from "@/components/ui/button"
 
 function App() {
   const account = useAccount()
@@ -10,6 +11,7 @@ function App() {
       <div>
         <h2>Account</h2>
 
+        <Button>Click me</Button>
         <div>
           status: {account.status}
           <br />
