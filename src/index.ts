@@ -19,7 +19,7 @@ run(async (context: HandlerContext) => {
 
   if (!clientInitialized) {
     redisClient = await getRedisClient();
-    startCron(redisClient, v2client);
+    startCron(redisClient as any, v2client);
     clientInitialized = true;
   }
 

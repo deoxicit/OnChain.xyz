@@ -1,15 +1,16 @@
 import { HandlerContext } from "@xmtp/message-kit";
-import { RedisClientType } from "@redis/client";
+import { GenericRedisClient } from "../lib/redis.js";
 import { handleMarketSentiment } from "./marketSentimentHandler.js";
 import { handleSubscription } from "./subscriptionHandler.js";
 import { handleAccountBalance } from "./accountBalanceHandler.js";
 import { handleTransactionHistory } from "./transactionHistoryHandler.js";
 import { handlePortfolioAnalytics } from "./portfolioAnalyticsHandler.js";
 import { isStopWord } from "../utils/stopWords.js";
+import { DEFAULT_MENU } from "../utils/menuUtils.js";
 
 export async function handleUserInput(
   context: HandlerContext,
-  redisClient: RedisClientType,
+  redisClient: GenericRedisClient,
   text: string,
   address: string
 ): Promise<{ message?: string; showMenu: boolean }> {
@@ -22,7 +23,7 @@ export async function handleUserInput(
   switch (cacheStep) {
     case "0":
       await redisClient.set(`${address}:step`, "1");
-      return { showMenu: true };
+      return { message: DEFAULT_MENU, showMenu: false };
     case "1":
       switch (text) {
         case "1": return handleMarketSentiment(context);
@@ -30,7 +31,7 @@ export async function handleUserInput(
         case "3": return handleAccountBalance(context, address);
         case "4": return handleTransactionHistory(context, redisClient, address, "start");
         case "5": return handlePortfolioAnalytics(context, address);
-        default: return { message: "Invalid option. Please choose a number between 1 and 5.", showMenu: false };
+        default: return { message: "Invalid option. Please choose a number between 1 and 5.", showMenu: true };
       }
     case "2":
     case "3":
