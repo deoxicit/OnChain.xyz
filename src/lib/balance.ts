@@ -2,9 +2,15 @@ import axios from "axios";
 
 const COVALENT_API_KEY = process.env.COVALENT_API_KEY;
 const SUPPORTED_CHAINS = [
-  { id: "1", name: "Ethereum" },
-  { id: "137", name: "Polygon" },
+  { id: "1", name: "Ethereum Mainnet" },
+  { id: "10", name: "Optimism" },
   { id: "56", name: "Binance Smart Chain" },
+  { id: "137", name: "Polygon" },
+  { id: "42161", name: "Arbitrum One" },
+  { id: "43114", name: "Avalanche C-Chain" },
+  { id: "250", name: "Fantom Opera" },
+  { id: "42220", name: "Celo" },
+  { id: "100", name: "Gnosis Chain (formerly xDai)" },
 ];
 
 export async function getAccountBalance(address: string): Promise<string> {

@@ -1,6 +1,8 @@
-import { createClient, RedisClientType } from "@redis/client";
+import { createClient, RedisClientType, RedisModules, RedisFunctions, RedisScripts } from "@redis/client";
 
-export async function getRedisClient(): Promise<RedisClientType> {
+export type GenericRedisClient = RedisClientType<RedisModules, RedisFunctions, RedisScripts>;
+
+export async function getRedisClient(): Promise<GenericRedisClient> {
   const client = createClient({
     url: process.env.REDIS_CONNECTION_STRING,
   });
