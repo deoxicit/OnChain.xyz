@@ -1,4 +1,4 @@
-# .
+# [OnChain.xyz](https://converse.xyz/dm/onchainxyz.converse.xyz)
 
 This project is generated using the [MessageKit](https://message-kit.vercel.app) v1.0.1 CLI and uses the `one-to-one` template. Below are the instructions to set up and run the project.
 
@@ -30,6 +30,8 @@ Set up these variables in your app
 KEY= # 0x... the private key of the bot wallet (with the 0x prefix)
 REDIS_CONNECTION_STRING= # redis db connection string
 MSG_LOG=true # logs the message on the console
+COVALENT_API_KEY= # Covalent Api Key
+ETHERSCAN_API_KEY= # Etherscan Api key
 ```
 
 ---
