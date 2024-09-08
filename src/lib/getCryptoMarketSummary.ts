@@ -70,7 +70,7 @@ async function fetchCryptoMarketInfo(): Promise<MarketInfo | null> {
 
 export async function getCryptoMarketSummary(): Promise<string> {
   const marketInfo = await fetchCryptoMarketInfo();
-  
+
   if (!marketInfo) {
     return "Unable to fetch crypto market information at this time.";
   }

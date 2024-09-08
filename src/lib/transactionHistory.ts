@@ -22,7 +22,7 @@ interface TransactionSummary {
 async function getTransactionHistory(address: string, chain: string): Promise<Transaction[]> {
   const apiKey = process.env.ETHERSCAN_API_KEY;
   const apiUrl = `https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=desc&apikey=${apiKey}`;
-  
+
   try {
     const response = await axios.get(apiUrl);
     if (response.data.status === '1' && Array.isArray(response.data.result)) {
@@ -51,27 +51,27 @@ function categorizeTransaction(transaction: Transaction): string {
 
 function summarizeTransactions(transactions: Transaction[]): TransactionSummary[] {
   const summary: { [key: string]: number } = {};
-  
+
   transactions.forEach(tx => {
     const type = categorizeTransaction(tx);
     summary[type] = (summary[type] || 0) + 1;
   });
-  
+
   return Object.entries(summary).map(([type, count]) => ({ type, count }));
 }
 
 export async function getWalletTransactionHistory(address: string, chain: string): Promise<string> {
   try {
     const transactions = await getTransactionHistory(address, chain);
-    
+
     if (transactions.length === 0) {
       return `No recent transactions found for ${address}.`;
     }
-    
+
     const summary = summarizeTransactions(transactions);
-    
+
     let response = `Recent transactions for ${address}:\n\n`;
-    
+
     transactions.forEach((tx, index) => {
       const date = new Date(parseInt(tx.timeStamp) * 1000).toLocaleString();
       const value = ethers.utils.formatEther(tx.value);
@@ -81,12 +81,12 @@ export async function getWalletTransactionHistory(address: string, chain: string
       response += `   To: ${tx.to}\n`;
       response += `   Hash: ${tx.hash.slice(0, 10)}...\n\n`;
     });
-    
+
     response += 'Transaction Summary:\n';
     summary.forEach(item => {
       response += `${item.type}: ${item.count}\n`;
     });
-    
+
     return response;
   } catch (error) {
     console.error('Error in getWalletTransactionHistory:', error);

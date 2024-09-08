@@ -27,7 +27,7 @@ export async function handleTransactionHistory(
     }
   } else if (step === "3") {
     let chain;
-    switch(input) {
+    switch (input) {
       case '1': chain = 'ethereum'; break;
       case '2': chain = 'polygon'; break;
       case '3': chain = 'bsc'; break;

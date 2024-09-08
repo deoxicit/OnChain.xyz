@@ -4,7 +4,7 @@ import { sendWaitMessage } from "../utils/waitMessage.js";
 
 export async function handleAccountBalance(context: HandlerContext, address: string): Promise<{ message: string; showMenu: boolean }> {
   const waitMessageTimer = await sendWaitMessage(context);
-  
+
   try {
     const balanceInfo = await getAccountBalance(address);
     clearTimeout(waitMessageTimer);
