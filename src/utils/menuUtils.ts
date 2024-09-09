@@ -8,6 +8,7 @@ Welcome to OnChain.xyz! Choose an option:
 4. Check wallet transaction history
 5. Get Portfolio Analytics
 6. Gas Price Notifications
+7. Wallet Security Check
 `;
 
 export async function sendDefaultMenu(context: HandlerContext) {

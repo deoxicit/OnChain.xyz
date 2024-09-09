@@ -6,6 +6,7 @@ import { handleAccountBalance } from "./accountBalanceHandler.js";
 import { handleTransactionHistory } from "./transactionHistoryHandler.js";
 import { handlePortfolioAnalytics } from "./portfolioAnalyticsHandler.js";
 import { handleGasPriceNotification } from "./gasNotificationHandler.js";
+import { handleWalletSecurityCheck } from "./walletSecurityCheck.js";
 import { isStopWord } from "../utils/stopWords.js";
 import { DEFAULT_MENU } from "../utils/menuUtils.js";
 
@@ -38,7 +39,8 @@ export async function handleUserInput(
         case "4": return handleTransactionHistory(context, redisClient, address, "start");
         case "5": return handlePortfolioAnalytics(context, address);
         case "6": return handleGasPriceNotification(context, redisClient, address, "0");
-        default: return { message: "Invalid option. Please choose a number between 1 and 6.", showMenu: true };
+        case "7": return handleWalletSecurityCheck(context, redisClient, address);
+        default: return { message: "Invalid option. Please choose a number between 1 and 7.", showMenu: true };
       }
     case "2":
     case "3":
